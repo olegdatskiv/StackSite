@@ -25,6 +25,7 @@ namespace StackOverflow.Controllers
         [HttpPost]
         public ActionResult Register(User account)
         {
+            account.ID = 1;
             if(ModelState.IsValid)
             {
                 using (UserAccountEntities db = new UserAccountEntities())
