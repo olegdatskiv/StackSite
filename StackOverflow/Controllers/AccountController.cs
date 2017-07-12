@@ -17,6 +17,28 @@ namespace StackOverflow.Controllers
             }
         }
 
+        public ActionResult Delete(int id)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                User user = db.Users.Find(id);
+                return View(user);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection formValues)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                User user = db.Users.Find(id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
+
         public ActionResult Register()
         {
             return View();
@@ -73,6 +95,30 @@ namespace StackOverflow.Controllers
             else
             {
                 return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                User user = db.Users.Find(id);
+                return View(user);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(user);
             }
         }
     }
