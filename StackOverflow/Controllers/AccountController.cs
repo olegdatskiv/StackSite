@@ -114,7 +114,7 @@ namespace StackOverflow.Controllers
         {
             Session["ID"] = null;
             Session["Username"] = null;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
 
     }

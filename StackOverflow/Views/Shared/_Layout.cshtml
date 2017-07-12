@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - StackOverflow</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -17,9 +17,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("StackOverflow", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Home","Index","Home")</li>
+                    @if (Session["ID"] != null)
+                    {
+                        <li>@Html.ActionLink("Add question", "Index", "Question")</li>
+                    }
+                    <li>@Html.ActionLink("Find question","Find","Question")</li>
+                    <li>@Html.ActionLink("List question","List","Question")</li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session["ID"] == null)
                     {
@@ -40,7 +49,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - My Web Site</p>
         </footer>
     </div>
 
