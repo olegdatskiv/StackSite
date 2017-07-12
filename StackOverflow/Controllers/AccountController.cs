@@ -76,7 +76,7 @@ namespace StackOverflow.Controllers
                 {
                     Session["ID"] = usr.ID.ToString();
                     Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("LoggedIn");
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
@@ -85,18 +85,6 @@ namespace StackOverflow.Controllers
             }
             return View();
         } 
-
-        public ActionResult LoggedIn()
-        {
-            if(Session["ID"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
 
         public ActionResult Edit(int id)
         {
