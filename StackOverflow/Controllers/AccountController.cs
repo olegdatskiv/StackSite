@@ -109,5 +109,13 @@ namespace StackOverflow.Controllers
                 return View(user);
             }
         }
+
+        public ActionResult Log_out()
+        {
+            Session["ID"] = null;
+            Session["Username"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
