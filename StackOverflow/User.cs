@@ -1,5 +1,4 @@
 
-
 namespace StackOverflow
 {
     using System;
@@ -31,7 +30,7 @@ namespace StackOverflow
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Question> Questions { get; set; }
     }

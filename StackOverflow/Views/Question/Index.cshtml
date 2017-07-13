@@ -32,10 +32,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.TextAreaFor(model => model.Text , new { htmlAttributes = new { @class = "form-control" } })
-               @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Problem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-12">
+               @Html.TextAreaFor(model => model.Problem , new { htmlAttributes = new { @class = "form-control" } })
+               @Html.ValidationMessageFor(model => model.Problem, "", new { @class = "text-danger" })
             </div>
         </div>
 

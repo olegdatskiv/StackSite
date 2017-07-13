@@ -1,5 +1,4 @@
 
-
 namespace StackOverflow
 {
     using System;
@@ -14,11 +13,11 @@ namespace StackOverflow
         [Required(ErrorMessage = "Topic is required.")]
         public string Topic { get; set; }
 
-        [Required(ErrorMessage = "Text is required.")]
-        public string Text { get; set; }
-
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Problem is required.")]
+        public string Problem { get; set; }
     
         public virtual User User { get; set; }
     }
