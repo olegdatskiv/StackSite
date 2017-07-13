@@ -14,6 +14,24 @@ namespace StackOverflow.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult Index(Question question)
+        {
+            if(ModelState.IsValid)
+            {
+                using (UserAccountEntities db = new UserAccountEntities())
+                {
+                    db.Questions.Add(question);
+                    db.SaveChanges();
+                }
+                ModelState.Clear();
+                ViewBag.Message = "Your question has been successfully added";
+            }
+            return View();
+        }
+
+
         public ActionResult List()
         {
             using (UserAccountEntities db = new UserAccountEntities())
