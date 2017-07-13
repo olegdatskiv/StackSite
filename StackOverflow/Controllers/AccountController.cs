@@ -17,6 +17,28 @@ namespace StackOverflow.Controllers
             }
         }
 
+        public ActionResult Delete(int id)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                User user = db.Users.Find(id);
+                return View(user);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection formValues)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                User user = db.Users.Find(id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
+
         public ActionResult Register()
         {
             return View();
@@ -54,7 +76,7 @@ namespace StackOverflow.Controllers
                 {
                     Session["ID"] = usr.ID.ToString();
                     Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("LoggedIn");
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
@@ -64,16 +86,36 @@ namespace StackOverflow.Controllers
             return View();
         } 
 
-        public ActionResult LoggedIn()
+        public ActionResult Edit(int id)
         {
-            if(Session["ID"] != null)
+            using (UserAccountEntities db = new UserAccountEntities())
             {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
+                User user = db.Users.Find(id);
+                return View(user);
             }
         }
+
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(user);
+            }
+        }
+
+        public ActionResult Log_out()
+        {
+            Session["ID"] = null;
+            Session["Username"] = null;
+            return RedirectToAction("Login");
+        }
+
     }
 }
