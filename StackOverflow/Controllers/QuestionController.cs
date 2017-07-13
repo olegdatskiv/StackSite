@@ -8,7 +8,6 @@ namespace StackOverflow.Controllers
 {
     public class QuestionController : Controller
     {
-        // GET: Question
         public ActionResult Index()
         {
             return View();
@@ -21,6 +20,5 @@ namespace StackOverflow.Controllers
                 return View(db.Questions.ToList());
             }
         }
-
     }
 }
