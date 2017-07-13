@@ -1,0 +1,46 @@
+﻿@model IEnumerable<StackOverflow.Question>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Question list</h2>
+
+<p>
+    @if (Session["ID"] != null)
+    {
+        @Html.ActionLink("Add new question", "Index", "Question")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Topic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.ActionLink("More", "Details", new { id = item.ID }))
+        </td>
+    </tr>
+}
+
+</table>

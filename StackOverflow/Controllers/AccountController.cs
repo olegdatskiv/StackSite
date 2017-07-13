@@ -47,10 +47,17 @@ namespace StackOverflow.Controllers
         [HttpPost]
         public ActionResult Register(User account)
         {
+
             if(ModelState.IsValid)
             {
                 using (UserAccountEntities db = new UserAccountEntities())
                 {
+                    var usr = db.Users.Where(u => u.Username == account.Username).FirstOrDefault();
+                    if (usr != null)
+                    {
+                        ViewBag.Message = account.Username + " already created. Please write another Username.";
+                        return View();
+                    }
                     db.Users.Add(account);
                     db.SaveChanges();
                 }
