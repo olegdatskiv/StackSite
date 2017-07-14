@@ -28,6 +28,10 @@
                     }
                     <li>@Html.ActionLink("Find question","Find","Question")</li>
                     <li>@Html.ActionLink("List question","List","Question")</li>
+                    @if(Session["ID"] != null)
+                    {
+                        <li>@Html.ActionLink("Your questions", "UserQuestion","Qusetion")</li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session["ID"] == null)
