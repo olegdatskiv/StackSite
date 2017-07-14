@@ -11,9 +11,9 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="Topic" Type="nvarchar" MaxLength="50" />
-          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Topic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Problem" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -76,9 +76,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="Topic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Topic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Problem" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="UserAccountModel.FK_Question_User" FromRole="Question" ToRole="User" />
         </EntityType>
         <Association Name="FK_Question_User">
@@ -114,8 +114,8 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="UserAccountModel.Question">
               <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="Problem" ColumnName="Problem" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Topic" ColumnName="Topic" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

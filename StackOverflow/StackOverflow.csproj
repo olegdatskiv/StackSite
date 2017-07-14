@@ -181,6 +181,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Question\List.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

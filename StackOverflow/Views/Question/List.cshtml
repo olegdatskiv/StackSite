@@ -26,7 +26,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Topic)
@@ -35,10 +36,14 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.Username)
+            @using (UserAccountEntities db = new UserAccountEntities())
+            {
+                var usr = db.Users.Where(u => u.ID == item.UserID).FirstOrDefault();
+                @Html.DisplayFor(modelItem => usr.Username)
+            }
         </td>
         <td>
-            @Html.ActionLink("More", "Details", new { id = item.ID }))
+            @Html.ActionLink("More", "Details", new { id = item.ID })
         </td>
     </tr>
 }
