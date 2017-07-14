@@ -8,6 +8,7 @@ namespace StackOverflow
     public partial class Question
     {
         public int ID { get; set; }
+
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "Topic is required.")]

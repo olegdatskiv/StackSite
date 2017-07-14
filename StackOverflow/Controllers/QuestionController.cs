@@ -22,6 +22,7 @@ namespace StackOverflow.Controllers
             {
                 using (UserAccountEntities db = new UserAccountEntities())
                 {
+                    question.UserID = Int32.Parse(Session["ID"].ToString());
                     db.Questions.Add(question);
                     db.SaveChanges();
                 }
