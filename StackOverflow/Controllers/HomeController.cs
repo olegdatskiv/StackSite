@@ -8,7 +8,7 @@ namespace StackOverflow.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: HomeController
         public ActionResult Index()
         {
             return View();
