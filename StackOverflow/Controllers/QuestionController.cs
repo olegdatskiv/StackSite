@@ -78,5 +78,14 @@ namespace StackOverflow.Controllers
             }
             return RedirectToAction("UserQuestion");
         }
+
+        public ActionResult Details(int id)
+        {
+            using (UserAccountEntities db = new UserAccountEntities())
+            {
+                var question = db.Questions.Find(id);
+                return View(question);
+            }
+        }
     }
 }
