@@ -78,7 +78,5 @@ namespace StackOverflow.Controllers
             }
             return RedirectToAction("UserQuestion");
         }
-
-
     }
 }

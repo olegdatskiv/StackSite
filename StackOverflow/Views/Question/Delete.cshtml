@@ -36,11 +36,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.User.FirstName)
+            @Html.DisplayNameFor(model => model.User.Username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
+           @using (UserAccountEntities db = new UserAccountEntities())
+            {
+                var usr = db.Users.Where(u => u.ID == Model.UserID).FirstOrDefault();
+                @Html.DisplayFor(modelItem => usr.Username)
+           }
         </dd>
 
     </dl>
